@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetMyFlix</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>NetMyFlix</h1>
+  <div id="profile-info" style="position: absolute; top: 20px; right: 20px; color: white;">
+    <span id="profileName"></span>
+    <button onclick="logout()" style="margin-left: 10px; padding: 5px 10px; background: #e50914; border: none; color: white; border-radius: 4px; cursor: pointer;">Kilépés</button>
+  </div>
+  <div class="search-container" style="text-align: center; padding: 20px;">
+    <input type="text" id="searchInput" placeholder="Keress filmek és sorozatok között..." 
+          style="width: 300px; padding: 10px; border-radius: 20px; border: none; background: #333; color: white;">
+  </div>
+  <div id="main-container" style="display: flex;">
+    <!-- Bal oldal: borítók -->
+    <div id="content" style="width: 50%;">
+      <!-- Itt jelenik meg a Gumball borító -->
+    </div>
+
+    <!-- Jobb oldal: szezonok -->
+    <div id="season-container" style="width: 50%; padding: 20px;">
+      <!-- Ide rakjuk majd a szezon gombokat -->
+    </div>
+  </div>
+  <script>
+    // Bejelentkezés ellenőrzése
+    if (!localStorage.getItem('isLoggedIn')) {
+        window.location.href = 'login.html';
+    }
+
+    // Profil név megjelenítése
+    const profileName = localStorage.getItem('currentProfile');
+    document.getElementById('profileName').textContent = `Üdv, ${profileName}!`;
+
+    // Kilépés funkció
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('currentProfile');
+        window.location.href = 'login.html';
+    }
+</script>
+  <script src="scripts.js"></script>
+</body>
+</html>
