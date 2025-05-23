@@ -309,5 +309,13 @@
     "type": "movie",
     "videoId": "1f6EZphSHc4KOIJK6ILKUK15cMCUwumZA",
     "source": "drive"
+  },
+
+  {
+    "title": "Nobody",
+    "cover": "assets/boritokepek/nobody_cover.jpg",
+    "type": "movie",
+    "videoId": "1BNDz3d6hTbKYILFMETMM3POSLhYRcJKE",
+    "source": "drive"
   }
 ]
