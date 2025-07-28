@@ -185,7 +185,33 @@ searchInput.addEventListener('input', (e) => {
       const backBtn = document.createElement("button");
       backBtn.textContent = "← Vissza az évadokhoz";
       backBtn.className = "back-btn";
-      backBtn.addEventListener("click", () => showSeasons(show));
+      backBtn.addEventListener("click", () => {
+        // Töröljük az epizódokat és újra megjelenítjük az évadokat
+        seasonContainer.innerHTML = "";
+        videoContainer.style.display = "none";
+        const seasonsTitle = document.createElement("h2");
+        seasonsTitle.textContent = "Évadok";
+        seasonsTitle.style.textAlign = "center";
+        seasonsTitle.style.marginBottom = "15px";
+        seasonContainer.appendChild(seasonsTitle);
+        show.seasons.forEach(seasonObj => {
+          const btn = document.createElement("button");
+          btn.textContent = seasonObj.name;
+          btn.className = "season-btn";
+          btn.addEventListener("click", () => showEpisodes(show, seasonObj));
+          seasonContainer.appendChild(btn);
+        });
+        // Vissza gomb a főoldalra
+        const backBtnMain = document.createElement("button");
+        backBtnMain.textContent = "← Vissza a főoldalra";
+        backBtnMain.className = "back-btn";
+        backBtnMain.addEventListener("click", () => {
+          content.style.display = "flex";
+          seasonContainer.innerHTML = "";
+          videoContainer.style.display = "none";
+        });
+        seasonContainer.appendChild(backBtnMain);
+      });
       seasonContainer.appendChild(backBtn);
   }
 
